@@ -1,0 +1,29 @@
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav__list {
+  display: flex;
+  list-style: none;
+  column-gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__item {
+
+}
+
+.nav__link {
+  color: $black;
+
+  &:hover {
+    color: $black-grey;
+  }
+
+  &:focus {
+    color: $black-grey;
+    opacity: 50%;
+  }
+}

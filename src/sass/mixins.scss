@@ -1,0 +1,43 @@
+@mixin center-x {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin main-font {
+  font-family: "Droid Sans", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  color: $black;
+  letter-spacing: 0.05em;
+}
+
+@mixin font-select {
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+  font-weight: 400;
+  text-align: start;
+}
+
+@mixin font-input {
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 18px;
+  line-height: 140%;
+  font-weight: 500;
+}
+
+@mixin wrapper {
+  min-width: 1020px;
+  max-width: 1430px;
+  margin: auto;
+}
+
+@mixin h3-title {
+  font-size: 14px;
+  line-height: 44px;
+  letter-spacing: 0.1em;
+  margin: 0;
+  opacity: 0.7;
+}

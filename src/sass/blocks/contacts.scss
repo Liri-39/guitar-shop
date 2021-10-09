@@ -1,0 +1,18 @@
+.contacts {
+  row-gap: 13px;
+  line-height: 12px;
+}
+
+.contacts__title {
+
+  @include h3-title;
+}
+
+.contacts__phone {
+  color: $white;
+}
+
+.contacts__address {
+  display: flex;
+  flex-direction: column;
+}
