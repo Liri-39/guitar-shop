@@ -1,0 +1,42 @@
+.pagination {
+  grid-area: pagination;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.pagination__button {
+  min-width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.7px solid #9F9E9E;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+
+  &--active {
+    background-color: $dark-grey;
+    color: $white;
+  }
+
+  &--next, &--previous {
+    padding: 2px 21px 2px 20px;
+  }
+
+  &--previous {
+    margin-right: 14px;
+  }
+
+  &--next{
+    margin-left: 14px;
+  }
+}
+
+.pagination__pages-list {
+  display: flex;
+  column-gap: 10px;
+}

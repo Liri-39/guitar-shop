@@ -1,0 +1,64 @@
+.card {
+  width: 220px;
+  height: 304px;
+  border: 1px solid $light-grey;
+  padding: 16px 13px 19px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  row-gap: 6px;
+  font-size: 14px;
+  line-height: 15px;
+  letter-spacing: 0.05em;
+}
+
+.card__image {
+  height: 190px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card__rating {
+  display: flex;
+  font-size: 10px;
+  line-height: 15px;
+  letter-spacing: 0.1em;
+  color: $grey;
+}
+
+.card__buttons, .card__info {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+
+.card__buttons {
+  margin-top: auto;
+}
+
+.card__title {
+  letter-spacing: 0.07em;
+}
+
+.card__info {
+
+}
+
+.card__button {
+  &--cart {
+    background-color: $orange;
+    background-image: url("data:image/svg+xml,%3Csvg width='11' height='11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 4h6.969l.25-1H3V2h6.86c.076 0 .151.01733.2193.05067a.500614.500614 0 0 1 .1749.14172c.0467.05992.0792.12971.0949.20406a.498711.498711 0 0 1-.0041.22505l-1.25 5a.49997.49997 0 0 1-.1774.27267A.499957.499957 0 0 1 8.61 8H1.5c-.13261 0-.25979-.05268-.35355-.14645A.499988.499988 0 0 1 1 7.5v-6H0v-1h1.5a.49999.49999 0 0 1 .35355.146447A.499995.499995 0 0 1 2 1v3zm0 7c-.26522 0-.51957-.1054-.70711-.2929C1.10536 10.5196 1 10.2652 1 10c0-.26522.10536-.51957.29289-.70711C1.48043 9.10536 1.73478 9 2 9s.51957.10536.70711.29289C2.89464 9.48043 3 9.73478 3 10c0 .2652-.10536.5196-.29289.7071C2.51957 10.8946 2.26522 11 2 11zm6 0c-.26522 0-.51957-.1054-.70711-.2929C7.10536 10.5196 7 10.2652 7 10c0-.26522.10536-.51957.29289-.70711C7.48043 9.10536 7.73478 9 8 9s.51957.10536.70711.29289C8.89464 9.48043 9 9.73478 9 10c0 .2652-.10536.5196-.29289.7071C8.51957 10.8946 8.26522 11 8 11z' fill='%23fff'/%3E%3C/svg%3E");
+    background-position: left 11px center;
+    background-repeat: no-repeat;
+    padding: 4px 12px;
+    padding-left: 28px;
+    letter-spacing: 0.06em;
+  }
+
+
+  &--product{
+    background: $medium-grey;
+  }
+}

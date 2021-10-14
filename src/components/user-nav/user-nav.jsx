@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import Icons  from "../icons/icons";
 import {useSelector} from 'react-redux';
 
@@ -18,10 +19,10 @@ const UserNav = () => {
                 </a>
             </li>
             <li className="nav-user__item">
-                <a className="nav-user__link" href="#">
+                <Link to={`/cart`} className="nav-user__link">
                     <Icons name="icon-basket" height="18" width="16"/>
                     <span className="nav-user__index">{goodsInBasket}</span>
-                </a>
+                </Link>
             </li>
         </ul>
     </div>

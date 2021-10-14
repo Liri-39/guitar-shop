@@ -1,0 +1,20 @@
+.catalog {
+  display: grid;
+  grid-template-columns: 208px 1fr;
+  grid-template-rows: min-content 1fr min-content;
+  gap: 28px 32px;
+  grid-template-areas:
+    "filters sorter"
+    "filters catalog"
+    "filters pagination";
+  justify-content: start;
+  align-content: start;
+  justify-items: start;
+  align-items: start;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.catalog__pagination {
+  margin-top: 2px;
+}

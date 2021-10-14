@@ -1,13 +1,15 @@
 import {createReducer} from "@reduxjs/toolkit";
+import {guitar} from "../../mocks/guitar";
 
 const initialState = {
-    goods: 0,
+    products: guitar,
+    page: 1,
 };
 
 const catalog = createReducer(initialState, (builder) => {
     builder
         .addCase(`changeCreditType`, (state, action) => {
-            state.goods = action.payload;
+            state.products = action.payload;
         })
 });
 

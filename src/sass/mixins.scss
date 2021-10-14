@@ -31,7 +31,7 @@
 @mixin wrapper {
   min-width: 1020px;
   max-width: 1430px;
-  margin: auto;
+  margin: 0 auto;
 }
 
 @mixin h3-title {

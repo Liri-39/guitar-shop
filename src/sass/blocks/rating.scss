@@ -1,0 +1,11 @@
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  color: $yellow;
+}
+
+.rating__label {
+  display: flex;
+  align-items: center;
+  margin-right: 4px;
+}
