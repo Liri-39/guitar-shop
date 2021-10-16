@@ -1,23 +1,17 @@
 import React from "react";
-import {useSelector} from "react-redux";
 import Picture from "../picture/picture";
 import RatingItem from "../rating-item/rating-item";
 import {ratings} from "../../const";
 import {priceFormat} from "../../util";
 
 const Card = ({product}) => {
-    const handleRatingChange = () => {
-
-    }
-
     return <div className="card" key={product.id}>
-        <Picture webp={product.webp} jpg={product.jpg} name={product.name}/>
+        <Picture webp={product.webp} jpg={product.jpg} name={product.name} location={`card`}/>
         <div className="card__rating">
             <div className="rating">
                 {ratings.map((item) =>
                     <RatingItem
                         item={item}
-                        handleOnChange={handleRatingChange}
                         rating={product.stars}
                         key={`${item.rating}-stars`}
                     />)}

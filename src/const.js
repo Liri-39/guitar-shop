@@ -1,7 +1,7 @@
 export const PRODUCTS_ON_PAGE = 9;
 
 export const NameSpace = {
-    BASKET: `BASKET`,
+    CART: `CART`,
     CATALOG: `CATALOG`
 };
 
@@ -24,3 +24,19 @@ export const ratings = [
     {rating: 2, title: `badly`},
     {rating: 1, title: `terribly`},
 ];
+
+export const Pages = {
+    CATALOG: `CATALOG`,
+    CART: `CART`
+}
+
+
+export const AppRoute = {
+    CATALOG: `/`,
+    CART: `/cart`
+};
+
+export const PageTitles = {
+    CATALOG: `Каталог`,
+    CART: `Корзина`
+}

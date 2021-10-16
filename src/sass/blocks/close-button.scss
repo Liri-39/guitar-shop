@@ -1,0 +1,40 @@
+.close-button {
+  position: relative;
+  background-color: transparent;
+  padding: 5px;
+  width: 18px;
+  height: 18px;
+  border: none;
+  justify-self: end;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    width: 18px;
+    height: 1px;
+    background-color: $grey;
+    position: absolute;
+    top: 8px;
+    left: 0;
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    content: "";
+    width: 18px;
+    height: 1px;
+    background-color: $grey;
+    position: absolute;
+    top: 8px;
+    left: 0;
+    transform: rotate(-45deg);
+  }
+
+  &:hover::after {
+    background-color: $red;
+  }
+
+  &:hover::before {
+    background-color: $red;
+  }
+}

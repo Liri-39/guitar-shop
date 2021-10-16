@@ -1,0 +1,50 @@
+.coupon {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 33px;
+}
+
+.coupon__title {
+  width: 100%;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 15px;
+  letter-spacing: 0.08em;
+  margin: 0;
+  margin-bottom: 9px;
+}
+
+.coupon__label {
+  width: 100%;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.08em;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.coupon__input {
+  min-width: 170px;
+  height: 36px;
+  border: 2px solid $light-grey;
+  border-radius: 2px;
+  font-size: 16px;
+  line-height: 15px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  flex: 0 0 0;
+}
+
+.coupon__button {
+  min-width: 200px;
+  height: 36px;
+  background: $medium-grey;
+  border-radius: 2px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 15px;
+  letter-spacing: 0.08em;
+  color: $white;
+  border: none;
+}
