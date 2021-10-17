@@ -6,8 +6,18 @@
   color: $white;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 4px 10px;
   border-radius: 2px;
   border: none;
   cursor: pointer;
+
+  &--action {
+    min-width: 220px;
+    height: 36px;
+    background: $orange;
+    font-size: 16px;
+    line-height: 15px;
+    letter-spacing: 0.08em;
+  }
 }

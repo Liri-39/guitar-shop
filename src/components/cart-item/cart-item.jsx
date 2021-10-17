@@ -2,7 +2,6 @@ import React from "react";
 import {useDispatch} from "react-redux";
 import Picture from "../picture/picture";
 import {useSelector} from "react-redux";
-import CloseButton from "../close-button/close-button";
 import {removeProductFromBasket, changeProductCount} from "../../store/action";
 import {priceFormat} from "../../util";
 
@@ -29,12 +28,15 @@ const CartItem = ({product}) => {
     }
 
     return <div className="cart__item">
-        <CloseButton classButton={"cart__close-button"} label={"Удалить товар"} cb={removeProducts}/>
+        <button className="close-button cart__close-button"
+                aria-label="Удалить товар"
+                onClick={removeProducts}
+        />
         <Picture webp={product.webp} jpg={product.jpg} name={product.name} location={`cart`}/>
-        <div className="cart__item-info">
-            <p className="cart__title">{product.type} {product.name}</p>
-            <p className="cart__article">Артикул: {product.code}</p>
-            <p className="cart__info">{product.type}, {product.strings} струнная</p>
+        <div className="cart__item-info product-info">
+            <p className="product-info__title">{product.type} {product.name}</p>
+            <p className="product-info__article">Артикул: {product.code}</p>
+            <p className="product-info__info">{product.type}, {product.strings} струнная</p>
         </div>
         <div className="cart__item-price">{priceFormat(product.price)} ₽</div>
         <div className="cart__item-count">

@@ -1,0 +1,56 @@
+.pop-up {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 740px;
+  height: min-content;
+  padding: 30px 50px;
+  z-index: 2;
+  background-color: $white;
+  box-shadow: 0 5px 6px $graphite;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+
+.pop-up__close-button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.pop-up__button {
+  margin-top: 14px;
+  margin-left: auto;
+}
+
+.pop-up__title {
+  width: 100%;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 15px;
+  letter-spacing: 0.02em;
+  margin: 0 0 25px;
+}
+
+.pop-up__content {
+  display: flex;
+  width: 100%;
+}
+
+.pop-up__image {
+  width: 56px;
+  height: 128px;
+}
+
+.pop-up__product-info {
+  margin: 14px 40px;
+}

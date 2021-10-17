@@ -25,9 +25,10 @@ export const ratings = [
     {rating: 1, title: `terribly`},
 ];
 
-export const Pages = {
-    CATALOG: `CATALOG`,
-    CART: `CART`
+export const PopUpTypes = {
+    ADDING_TO_CART: `Добавить товар в корзину`,
+    REMOVING_FROM_CART: `Удалить этот товар?`,
+    SUCCESS_MESSAGE: `Товар успешно добавлен в корзину`
 }
 
 
