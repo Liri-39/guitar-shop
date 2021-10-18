@@ -2,10 +2,21 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  background-color: $dark-grey;
-  opacity: 0.6;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba($dark-grey, 0.6);
   z-index: 1;
   position: fixed;
   top: 0;
   left: 0;
+  opacity: 0;
+  transition: 0.5s;
+  pointer-events: none;
+
+  &--active {
+    opacity: 1;
+    pointer-events: all;
+  }
 }

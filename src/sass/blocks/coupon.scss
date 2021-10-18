@@ -22,6 +22,10 @@
   letter-spacing: 0.08em;
   margin: 0;
   margin-bottom: 20px;
+
+  &--error {
+    color: $red;
+  }
 }
 
 .coupon__input {

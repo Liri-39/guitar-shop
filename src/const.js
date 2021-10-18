@@ -26,6 +26,12 @@ export const ratings = [
 ];
 
 export const PopUpTypes = {
+    ADDING_TO_CART: `ADDING_TO_CART`,
+    REMOVING_FROM_CART: `REMOVING_FROM_CART`,
+    SUCCESS_MESSAGE: `SUCCESS_MESSAGE`
+}
+
+export const PopUpTitles = {
     ADDING_TO_CART: `Добавить товар в корзину`,
     REMOVING_FROM_CART: `Удалить этот товар?`,
     SUCCESS_MESSAGE: `Товар успешно добавлен в корзину`
@@ -40,4 +46,19 @@ export const AppRoute = {
 export const PageTitles = {
     CATALOG: `Каталог`,
     CART: `Корзина`
+}
+
+export const Coupons = {
+    GITARAHIT: {
+        maxPercent: 10,
+        fixSum: 0
+    },
+    SUPERGITARA : {
+        maxPercent: 0,
+        fixSum: 700
+    },
+    GITARA2020: {
+        maxPercent: 30,
+        fixSum: 3000
+    },
 }

@@ -20,4 +20,16 @@
     line-height: 15px;
     letter-spacing: 0.08em;
   }
+
+  &--second-action {
+    border: 1px solid $dark-grey;
+    color: $dark-grey;
+    box-sizing: border-box;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 15px;
+    letter-spacing: 0.08em;
+    background-color: $white;
+  }
 }

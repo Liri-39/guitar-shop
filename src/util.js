@@ -9,8 +9,19 @@ export const sortAsc = (a, b) => a - b;
 export const sortDesc = (a, b) => b - a;
 
 export const getProductsOnPage = (arr, page) => {
-    const startIndex = (page-1) * PRODUCTS_ON_PAGE;
+    const startIndex = (page - 1) * PRODUCTS_ON_PAGE;
     const endIndex = page * PRODUCTS_ON_PAGE;
 
     return arr.slice(startIndex, endIndex)
+}
+
+export const getSumWithCoupon = (sum, maxPercent, fixSum) => {
+    if (maxPercent === 0 || fixSum === 0) {
+        return sum * (1 - (maxPercent / 100)) - fixSum
+    }
+    if ((sum * (maxPercent / 100)) >= fixSum) {
+        return sum - fixSum
+    } else {
+        return sum * (1 - (maxPercent / 100))
+    }
 }

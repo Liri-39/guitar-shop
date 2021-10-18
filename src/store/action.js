@@ -7,21 +7,21 @@ export const ActionType = {
     CHANGE_PRODUCT_COUNT: `changeProductCount`,
 }
 
-export const addProductToBasket = createAction(ActionType.ADD_PRODUCT_TO_BASKET, (product) => {
+export const addProductToCart = createAction(ActionType.ADD_PRODUCT_TO_BASKET, (product) => {
     return {
         payload: product,
     };
 });
 
-export const removeProductFromBasket = createAction(ActionType.REMOVE_PRODUCT_FROM_BASKET, (id) => {
+export const removeProductFromCart = createAction(ActionType.REMOVE_PRODUCT_FROM_BASKET, (id) => {
     return {
         payload: id,
     };
 });
 
-export const changeProductCount = createAction(ActionType.CHANGE_PRODUCT_COUNT, (id, count) => {
+export const changeProductCount = createAction(ActionType.CHANGE_PRODUCT_COUNT, (count, id) => {
     return {
-        payload: id,
+        payload: {id, count},
     };
 });
 
