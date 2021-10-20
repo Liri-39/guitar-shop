@@ -30,6 +30,11 @@
 
 .modal__button {
   height: 46px;
+  margin-left: auto;
+
+  &--success {
+    margin-left: 0;
+  }
 }
 
 .modal__title {
@@ -44,6 +49,11 @@
 .modal__content {
   display: flex;
   width: 100%;
+
+  &--success-block {
+    justify-content: center;
+    gap: 37px;
+  }
 }
 
 .modal__image {

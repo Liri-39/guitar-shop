@@ -1,35 +1,59 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {PRODUCTS_ON_PAGE} from "../../const";
+import {useDispatch, useSelector} from "react-redux";
+import {changePage} from "../../store/action";
+import {getActiveProducts} from "../../store/catalog/selectors";
 
-const Pagination= ({productsCount, activePage}) => {
+const Pagination = () => {
+    const {page} = useSelector((state) => state.CATALOG);
+    const products = useSelector(getActiveProducts);
+
+    const dispatch = useDispatch();
+
+    const productsCount = products.length;
+    const activePage = Number(page);
+
+    const handleClick = (evt) => {
+        evt.preventDefault();
+        let newValue = evt.target.id;
+        switch (evt.target.id) {
+            case (`prevPage`):
+                newValue = activePage - 1;
+                break;
+            case (`nextPage`):
+                newValue = activePage + 1;
+                break
+            default:
+                return newValue;
+        }
+        dispatch(changePage(newValue))
+    }
+
 
     const startPage = 1;
     const totalPages = Math.ceil(productsCount / PRODUCTS_ON_PAGE);
-/*
-    const range = (from, to, step = 1) => {
-        let i = from;
-        const range = [];
 
-        while (i <= to) {
-            range.push(i);
-            i += step;
-        }
-
-        return range;
-    }*/
-
-    return <div className="catalog__pagination pagination">
-        {Boolean(Number(activePage) !== 1) && <a className="pagination__button pagination__button--previous" href="">Назад</a>}
+    return <div className="catalog__pagination pagination" onClick={handleClick}>
+        {Boolean(Number(activePage) !== 1) &&
+        <a className="pagination__button pagination__button--previous" id={`prevPage`} href="">Назад</a>}
         <div className="pagination__pages-list">
-            <a className={`pagination__button ${activePage === startPage ? `pagination__button--active` : ``}`} href="">{1}</a>
-            {Boolean(Number(activePage) === startPage) && <a className="pagination__button" href="">{startPage+1}</a>}
-            {Boolean(Number(activePage) !== startPage && Number(activePage) !== startPage+1) && <a className="pagination__button" href="">...</a>}
-            {Boolean(Number(activePage) !== totalPages && Number(activePage) !== startPage) && <a className="pagination__button pagination__button--active" href="">{activePage}</a>}
-            {Boolean(Number(activePage) !== totalPages && Number(activePage) !== totalPages-1) && <a className="pagination__button" href="">...</a>}
-            {Boolean(Number(activePage) === totalPages) && <a className="pagination__button" href="">{totalPages-1}</a>}
-            <a className={`pagination__button ${activePage === totalPages ? `pagination__button--active` : ``}`} href="">{totalPages}</a>
+            <a className={`pagination__button ${activePage === startPage ? `pagination__button--active` : ``}`}
+               id={startPage} href="">{Number(startPage)}</a>
+            {Boolean(Number(activePage) === startPage && totalPages>3) &&
+            <a className="pagination__button" href="" id={Number(startPage + 1)}>{startPage + 1}</a>}
+            {Boolean(Number(activePage) !== startPage && Number(activePage) !== startPage + 1) &&
+            <a className="pagination__button">...</a>}
+            {Boolean(Number(activePage) !== totalPages && Number(activePage) !== startPage) &&
+            <a className="pagination__button pagination__button--active">{Number(activePage)}</a>}
+            {Boolean(Number(activePage) !== totalPages && Number(activePage) !== totalPages - 1) &&
+            <a className="pagination__button">...</a>}
+            {Boolean(Number(activePage) === totalPages && totalPages>3) &&
+            <a className="pagination__button" href="" id={Number(totalPages - 1)}>{totalPages - 1}</a>}
+            <a className={`pagination__button ${activePage === totalPages ? `pagination__button--active` : ``}`}
+               id={Number(totalPages)} href="">{Number(totalPages)}</a>
         </div>
-        {Boolean(Number(activePage) !== totalPages) && <a className="pagination__button pagination__button--next" href="">Далее</a>}
+        {Boolean(Number(activePage) !== totalPages) &&
+        <a className="pagination__button pagination__button--next" id={`nextPage`} href="">Далее</a>}
     </div>
 }
 

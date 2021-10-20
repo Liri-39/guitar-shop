@@ -1,6 +1,8 @@
 .checkbox-filter {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
 }
 
 .checkbox-filter__label {
@@ -10,6 +12,7 @@
   line-height: 19px;
   letter-spacing: 0.02em;
   margin-bottom: 12px;
+  overflow: hidden;
 
   &:last-child{
     margin-bottom: 0;
@@ -24,6 +27,10 @@
     border-radius: 2px;
     margin-right: 17px;
   }
+
+  &:hover {
+    color: $grey;
+  }
 }
 
 input[type="checkbox"] {
@@ -32,8 +39,12 @@ input[type="checkbox"] {
     background-position: center;
     background-repeat: no-repeat;
   }
+
   &:disabled  + .checkbox-filter__label:before {
     background: $white-grey;
     border-color: $lighter-grey;
+  }
+  &:hover + .checkbox-filter__label:before {
+    border-color: $dark-grey;
   }
 }

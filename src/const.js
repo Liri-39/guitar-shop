@@ -5,6 +5,12 @@ export const NameSpace = {
     CATALOG: `CATALOG`
 };
 
+export const GuitarEnum = {
+    ACOUSTIC: `ACOUSTIC`,
+    ELECTRIC: `ELECTRIC`,
+    UKULELE: `UKULELE`,
+}
+
 export const GuitarType = {
     ACOUSTIC: `Акустические гитары`,
     ELECTRIC: `Электрогитары`,
@@ -28,7 +34,6 @@ export const ratings = [
 export const PopUpTypes = {
     ADDING_TO_CART: `ADDING_TO_CART`,
     REMOVING_FROM_CART: `REMOVING_FROM_CART`,
-    SUCCESS_MESSAGE: `SUCCESS_MESSAGE`
 }
 
 export const PopUpTitles = {
@@ -61,4 +66,25 @@ export const Coupons = {
         maxPercent: 30,
         fixSum: 3000
     },
+}
+
+export const SortEnum = {
+    byPrice: `byPrice`,
+    byRating: `byRating`
+}
+
+export const sortType = {
+    byPrice: `по цене`,
+    byRating: `по популярности`
+};
+
+export const sortMethod = {
+    up: `по возрастанию`,
+    down: `по убыванию`
+};
+
+export const FilterEnum = {
+    sum: `sum`,
+    types: `types`,
+    strings : `strings`
 }

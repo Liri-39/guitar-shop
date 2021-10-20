@@ -1,9 +1,18 @@
 .social {
   display: flex;
-  column-gap: 22px;
+  column-gap: 23px;
+  margin-top: -6px;
 }
 
 .social__link {
   color: $white;
   fill: currentColor;
+
+  &:hover {
+    color: $grey;
+  }
+
+  &:focus {
+    color: $grey-grey;
+  }
 }

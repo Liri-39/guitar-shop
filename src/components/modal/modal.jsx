@@ -1,28 +1,37 @@
 import React, { useState } from "react";
-import  {PopUpTypes} from "../../const";
+import {AppRoute, PopUpTypes} from "../../const";
 
 import Picture from "../picture/picture";
 import {priceFormat} from "../../util";
 import {useDispatch} from "react-redux";
-import {removeProductFromCart} from "../../store/action";
+import {addProductToCart, removeProductFromCart} from "../../store/action";
+import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
 
-const AddingToCart = (props) => {
+const AddingToCart = ({product, onAdd}) => {
+    const dispatch = useDispatch();
+
+    const addProduct = () => {
+        dispatch(addProductToCart(Object.assign({}, product,{count: 1})));
+        onAdd(true);
+    }
+
     return <>
-        <Picture webp={props.webp} jpg={props.jpg} name={props.name} location={`modal`}/>
+        <Picture webp={product.webp} jpg={product.jpg} name={product.name} location={`modal`}/>
         <div className="modal__product-info product-info">
-            <p className="product-info__title">{props.type} {props.name}</p>
-            <p className="product-info__article">Артикул: {props.code}</p>
-            <p className="product-info__info">{props.type}, {props.strings} струнная</p>
-            <p className="product-info__price">Цена: {priceFormat(props.price)} ₽</p>
+            <p className="product-info__title">{product.type} {product.name}</p>
+            <p className="product-info__article">Артикул: {product.code}</p>
+            <p className="product-info__info">{product.type}, {product.strings} струнная</p>
+            <p className="product-info__price">Цена: {priceFormat(product.price)} ₽</p>
         </div>
-        <button className="button button--action modal__button" autoFocus>Добавить в корзину</button>
+        <button className="button button--action modal__button" onClick={addProduct} autoFocus>Добавить в корзину</button>
     </>
 }
 
-const SuccessMessage = () => {
+const SuccessMessage = ({onClose}) => {
     return <>
-        <button className="button button--action modal__button" autoFocus>Перейти в корзину</button>
-        <button className="button button--second-action modal__button" autoFocus>Продолжить покупки</button>
+        <Link to={AppRoute.CART} className="button button--action modal__button modal__button--success" autoFocus>Перейти в корзину</Link>
+        <button className="button button--second-action modal__button modal__button--success" onClick={onClose}>Продолжить покупки</button>
     </>
 }
 
@@ -52,6 +61,8 @@ const RemovingFromCart = ({product, onClose}) => {
 const Modal = (props) => {
     const { type, title, product, active, setModalActive } = props;
 
+    const [isAdded, setIsAdded] = useState(false);
+
     const handleClose = () => {
         setModalActive(false);
     }
@@ -69,13 +80,21 @@ const Modal = (props) => {
                     aria-label="Закрыть окно"
                     onClick={handleClose}
             />
-            <div className="modal__content">
-                {type===PopUpTypes.ADDING_TO_CART && <p>PopUpTypes.ADDING_TO_CART</p>}
+            <div className={`modal__content ${isAdded? `modal__content--success-block`: ``}`}>
+                {!isAdded && type===PopUpTypes.ADDING_TO_CART && <AddingToCart product={product} onAdd={setIsAdded}/>}
                 {type===PopUpTypes.REMOVING_FROM_CART && <RemovingFromCart  product={product} onClose={handleClose}/>}
-                {type===PopUpTypes.SUCCESS_MESSAGE && <SuccessMessage/>}
+                {isAdded && <SuccessMessage onClose={handleClose}/>}
             </div>
         </div>
     </div>
 }
+
+Modal.propTypes = {
+    type: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    product: PropTypes.any,
+    active: PropTypes.bool,
+    setModalActive: PropTypes.func
+};
 
 export default Modal;

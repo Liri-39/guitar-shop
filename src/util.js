@@ -6,7 +6,16 @@ export const priceFormat = (data) => {
 }
 
 export const sortAsc = (a, b) => a - b;
-export const sortDesc = (a, b) => b - a;
+
+export const getMinPrice = (arr) => {
+     const newarr = arr.slice().sort((a, b) => a.price - b.price);
+     return newarr[0].price
+}
+
+export const getMaxPrice = (arr) => {
+    const newarr = arr.slice().sort((a, b) => b.price - a.price);
+    return newarr[0].price
+}
 
 export const getProductsOnPage = (arr, page) => {
     const startIndex = (page - 1) * PRODUCTS_ON_PAGE;

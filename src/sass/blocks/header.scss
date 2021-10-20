@@ -32,14 +32,17 @@
 .header__wrapper {
   display: flex;
   padding: 20px 40px;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   @include wrapper;
 }
 
 .header__logo {
-  @include center-x
+  margin-right: 113px;
+
+  @include center-x;
 }
 
-.header__nav {
+.header__nav-user {
+  margin-left: auto;
 }

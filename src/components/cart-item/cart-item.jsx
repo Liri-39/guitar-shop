@@ -5,6 +5,7 @@ import {changeProductCount} from "../../store/action";
 import {priceFormat} from "../../util";
 import Modal from "../modal/modal";
 import {PopUpTitles, PopUpTypes} from "../../const";
+import PropTypes from "prop-types";
 
 const CartItem = ({product}) => {
     const dispatch = useDispatch();
@@ -70,5 +71,9 @@ const CartItem = ({product}) => {
         </div>
     </>
 }
+
+CartItem.propTypes = {
+    product: PropTypes.any
+};
 
 export default CartItem;

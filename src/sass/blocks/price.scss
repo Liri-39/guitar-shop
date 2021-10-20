@@ -36,4 +36,8 @@
     border: 2px solid red;
     outline: none;
   }
+
+  &:hover {
+    border-color: $dark-grey;
+  }
 }

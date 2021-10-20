@@ -38,6 +38,10 @@
   letter-spacing: 0.08em;
   text-align: center;
   flex: 0 0 0;
+
+  &:hover {
+    border-color: $grey;
+  }
 }
 
 .coupon__button {
@@ -51,4 +55,12 @@
   letter-spacing: 0.08em;
   color: $white;
   border: none;
+
+  &:hover {
+    background-color: $dark-grey;
+  }
+
+  &:focus {
+    background-color: $grey;
+  }
 }

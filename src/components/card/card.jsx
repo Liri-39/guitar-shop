@@ -1,15 +1,16 @@
 import React, {useState} from "react";
 import Picture from "../picture/picture";
 import RatingItem from "../rating-item/rating-item";
-import {PopUpTypes, ratings} from "../../const";
+import {PopUpTitles, PopUpTypes, ratings} from "../../const";
 import {priceFormat} from "../../util";
 import Modal from "../modal/modal";
+import PropTypes from "prop-types";
 
 const Card = ({product}) => {
     const [modalActive, setModalActive] = useState(false);
 
     return <>
-        {modalActive && <Modal product={product} title={PopUpTypes.ADDING_TO_CART} active={modalActive} type={PopUpTypes.ADDING_TO_CART} setModalActive={setModalActive}/>}
+        {modalActive && <Modal product={product} title={PopUpTitles.ADDING_TO_CART} active={modalActive} type={PopUpTypes.ADDING_TO_CART} setModalActive={setModalActive}/>}
         <div className="card" key={product.id}>
             <Picture webp={product.webp} jpg={product.jpg} name={product.name} location={`card`}/>
             <div className="card__rating">
@@ -34,5 +35,9 @@ const Card = ({product}) => {
         </div>
     </>
 }
+
+Card.propTypes = {
+    product: PropTypes.any,
+};
 
 export default Card;

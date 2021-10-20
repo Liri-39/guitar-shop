@@ -12,8 +12,11 @@
 }
 
 .sorter__list {
-display: flex;
+  margin: 0;
+  padding: 0;
+  display: flex;
   column-gap: 33px;
+  list-style: none;
 }
 
 .sorter__item {

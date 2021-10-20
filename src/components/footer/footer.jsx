@@ -6,16 +6,14 @@ const Footer = () => {
     return <footer className="page__footer footer">
         <div className="footer__wrapper">
             <div className="footer__column">
-                <div className="logo">
-                    <a href="/" className="logo--footer header__logo" aria-label="Логотип Guitar-shop">
-                        <Icons name="logo" height="70" width="67"/>
-                    </a>
-                </div>
+                <a href="/" className="logo logo--footer footer__logo" aria-label="Логотип Guitar-shop">
+                    <Icons name="logo" height="70" width="67"/>
+                </a>
                 <Social/>
             </div>
             <div className="footer__column footer__column--info">
                 <div className="footer__info-item">
-                    <h3 className="footer__title">О нас</h3>
+                    <p className="footer__title">О нас</p>
                     <span className="footer__text">
                         Магазин гитар, музыкальных инструментов и гитарная мастерская в Санкт-Петербурге.
                     </span>
@@ -24,42 +22,44 @@ const Footer = () => {
                     </span>
                 </div>
                 <div className="footer__info-item">
-                    <h3 className="footer__title">Каталог</h3>
+                    <p className="footer__title">Каталог</p>
                     <ul className="footer__list">
-                        <li className=""><a href="#" className="footer__link">Акустические гитары</a></li>
-                        <li className=""><a href="#" className="footer__link">Классические гитары</a></li>
-                        <li className=""><a href="#" className="footer__link">Электрогитары</a></li>
-                        <li className=""><a href="#" className="footer__link">Бас-гитары</a></li>
-                        <li className=""><a href="#" className="footer__link">Укулеле</a></li>
+                        <li className="footer__list-item"><a href="#" className="footer__link">Акустические гитары</a>
+                        </li>
+                        <li className="footer__list-item"><a href="#" className="footer__link">Классические гитары</a>
+                        </li>
+                        <li className="footer__list-item"><a href="#" className="footer__link">Электрогитары</a></li>
+                        <li className="footer__list-item"><a href="#" className="footer__link">Бас-гитары</a></li>
+                        <li className="footer__list-item"><a href="#" className="footer__link">Укулеле</a></li>
                     </ul>
                 </div>
                 <div className="footer__info-item">
-                    <h3 className="footer__title">Информация</h3>
+                    <p className="footer__title">Информация</p>
                     <ul className="footer__list">
-                        <li className=""><a href="#" className="footer__link">Где купить?</a></li>
-                        <li className=""><a href="#" className="footer__link">Блог</a></li>
-                        <li className=""><a href="#" className="footer__link">Вопрос - ответ</a></li>
-                        <li className=""><a href="#" className="footer__link">Возврат</a></li>
-                        <li className=""><a href="#" className="footer__link">Сервис-центры</a></li>
+                        <li className="footer__list-item"><a href="#" className="footer__link">Где купить?</a></li>
+                        <li className="footer__list-item"><a href="#" className="footer__link">Блог</a></li>
+                        <li className="footer__list-item"><a href="#" className="footer__link">Вопрос - ответ</a></li>
+                        <li className="footer__list-item"><a href="#" className="footer__link">Возврат</a></li>
+                        <li className="footer__list-item"><a href="#" className="footer__link">Сервис-центры</a></li>
                     </ul>
                 </div>
             </div>
-            <div className="footer__column footer__column--contacts contacts">
-                <h3 className="contacts__title">Контакты</h3>
-                <div className="contacts__item">
-                    <address className="contacts__address">
-                        <span>г. Санкт-Петербург,</span>
-                        <span>м. Невский проспект,</span>
-                        <span>ул. Казанская 6.</span>
-                    </address>
-                    <a href="tel:+78125005050" className="contacts__phone">
-                        <Icons name="icon-phone" width="10" height="10"/>
-                        <span>8-812-500-50-50</span>
-                    </a>
-                </div>
-                <div className="contacts__item">
-                    <Icons name="icon-clock" width="10" height="10"/>
-                    <span>Режим работы: с 11:00 до 20:00, без выходных.</span>
+            <div className="footer__column footer__column--contacts ">
+                <p className="footer__title">Контакты</p>
+                <div className="contacts">
+                    <div className="contacts__item">
+                        <address className="contacts__address">
+                            <span>г. Санкт-Петербург,</span>
+                            <span>м. Невский проспект,</span>
+                            <span>ул. Казанская 6.</span>
+                        </address>
+                        <a href="tel:+78125005050" className="contacts__phone">8-812-500-50-50</a>
+                    </div>
+                    <div className="contacts__item contacts__item--timetable">
+                        <span className="contacts__title">Режим работы:</span>
+                        <span className="contacts__timetable">с 11:00 до 20:00</span>
+                        <span>без выходных.</span>
+                    </div>
                 </div>
             </div>
         </div>

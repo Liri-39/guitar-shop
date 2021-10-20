@@ -99,6 +99,10 @@
   &::-webkit-inner-spin-button {
     appearance: none;
   }
+
+  &:hover {
+    opacity: 0.5;
+  }
 }
 
 .cart__item-count-button {
@@ -107,6 +111,10 @@
   width: 27px;
   height: 30px;
   font-size: 20px;
+
+  &:hover {
+    opacity: 0.5;
+  }
 }
 
 .cart__footer {

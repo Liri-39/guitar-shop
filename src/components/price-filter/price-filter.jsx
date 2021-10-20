@@ -1,28 +1,72 @@
 import React from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {getFilters} from "../../store/catalog/selectors";
+import {getMaxPrice, getMinPrice} from "../../util";
+import {changeFilter} from "../../store/action";
+import {FilterEnum} from "../../const";
 
-const PriceFilter = (handleChangeInput) => {
+const PriceFilter = () => {
+    const dispatch = useDispatch();
+
+    const {products} = useSelector((state) => state.CATALOG);
+    const activeFilterValues = useSelector(getFilters);
+
+    const min = getMinPrice(products);
+    const max = getMaxPrice(products);
+
+    const minSum = activeFilterValues.sum.minSum < min ? min : activeFilterValues.sum.minSum;
+    const maxSum = (activeFilterValues.sum.maxSum > max || activeFilterValues.sum.maxSum === 0)? max : activeFilterValues.sum.maxSum;
+
+    const handleChangeMinSum = (evt) => {
+        let newValue = evt.target.value;
+        if (newValue > activeFilterValues.sum.maxSum) {
+            newValue = activeFilterValues.sum.maxSum
+        }
+        if (newValue < min) {
+            newValue = min
+        }
+        dispatch(changeFilter(FilterEnum.sum, {
+            ...activeFilterValues.sum,
+            [evt.target.id]: Number(newValue)
+        }));
+    }
+
+    const handleChangeMaxSum = (evt) => {
+        let newValue = evt.target.value;
+        if (newValue < activeFilterValues.sum.minSum) {
+            newValue = activeFilterValues.sum.minSum
+        }
+        if (newValue > max) {
+            newValue = max
+        }
+        dispatch(changeFilter(FilterEnum.sum, {
+            ...activeFilterValues.sum,
+            [evt.target.id]: Number(newValue)
+        }));
+    }
+
     return <div className="filter__block-item price">
         <label className="visually-hidden" htmlFor="min">От</label>
         <input className="price__input"
                type="number"
                id="min"
-               name="min"
-               min={0}
-               max={100000}
-               placeholder={0}
-               value={1000}
-               onChange={handleChangeInput}
+               name="minSum"
+               min={min}
+               max={max}
+               placeholder={minSum}
+               value={minSum}
+               onChange={handleChangeMinSum}
                aria-label="Минимальное значение"/>
         <label className="visually-hidden" htmlFor="max">До</label>
         <input className="price__input"
                type="number"
                id="max"
-               name="max"
-               min={0}
-               max={100000}
-               placeholder={0}
-               value={30000}
-               onChange={handleChangeInput}
+               name="maxSum"
+               min={min}
+               max={max}
+               placeholder={maxSum}
+               value={maxSum}
+               onChange={handleChangeMaxSum}
                aria-label="Максимальное значение"/>
     </div>
 }

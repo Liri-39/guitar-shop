@@ -7,7 +7,7 @@ import {AppRoute} from "../../const";
 const UserNav = () => {
     const {products} = useSelector((state) => state.CART);
 
-    return <div className="nav-user">
+    return <div className="header__nav-user nav-user">
         <ul className="nav-user__list">
             <li className="nav-user__item">
                 <a className="nav-user__link" href="/">
