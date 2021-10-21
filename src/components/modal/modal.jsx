@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import {AppRoute, PopUpTypes} from "../../const";
+import React, {useState, useRef} from "react";
+import {AppRoute, PopUpTypes, GuitarNames} from "../../const";
 
 import Picture from "../picture/picture";
 import {priceFormat} from "../../util";
@@ -11,8 +11,8 @@ import PropTypes from "prop-types";
 const AddingToCart = ({product, onAdd}) => {
     const dispatch = useDispatch();
 
-    const addProduct = () => {
-        dispatch(addProductToCart(Object.assign({}, product,{count: 1})));
+    const handleClickButton = () => {
+        dispatch(addProductToCart(Object.assign({}, product, {count: 1})));
         onAdd(true);
     }
 
@@ -21,17 +21,21 @@ const AddingToCart = ({product, onAdd}) => {
         <div className="modal__product-info product-info">
             <p className="product-info__title">{product.type} {product.name}</p>
             <p className="product-info__article">Артикул: {product.code}</p>
-            <p className="product-info__info">{product.type}, {product.strings} струнная</p>
+            <p className="product-info__info">{GuitarNames[product.type]}, {product.strings} струнная</p>
             <p className="product-info__price">Цена: {priceFormat(product.price)} ₽</p>
         </div>
-        <button className="button button--action modal__button" onClick={addProduct} autoFocus>Добавить в корзину</button>
+        <button className="modal__button--action modal__button" onClick={handleClickButton} autoFocus>Добавить в корзину
+        </button>
     </>
 }
 
 const SuccessMessage = ({onClose}) => {
     return <>
-        <Link to={AppRoute.CART} className="button button--action modal__button modal__button--success" autoFocus>Перейти в корзину</Link>
-        <button className="button button--second-action modal__button modal__button--success" onClick={onClose}>Продолжить покупки</button>
+        <Link to={AppRoute.CART} className="modal__button modal__button--success modal__button--action" autoFocus>Перейти
+            в корзину</Link>
+        <button className="modal__button modal__button--success modal__button--second-action"
+                onClick={onClose}>Продолжить покупки
+        </button>
     </>
 }
 
@@ -48,20 +52,25 @@ const RemovingFromCart = ({product, onClose}) => {
         <div className="modal__product-info product-info">
             <p className="product-info__title">{product.type} {product.name}</p>
             <p className="product-info__article">Артикул: {product.code}</p>
-            <p className="product-info__info">{product.type}, {product.strings} струнная</p>
+            <p className="product-info__info">{GuitarNames[product.type]}, {product.strings} струнная</p>
             <p className="product-info__price">Цена: {priceFormat(product.price)} ₽</p>
         </div>
         <div className="modal__buttons">
-            <button className="button button--action modal__button" autoFocus onClick={removeProducts}>Удалить товар</button>
-            <button className="button button--second-action modal__button" onClick={onClose}>Продолжить покупки</button>
+            <button className="modal__button--action modal__button" autoFocus onClick={removeProducts}>Удалить товар
+            </button>
+            <button className="modal__button--second-action modal__button" onClick={onClose}>Продолжить покупки</button>
         </div>
     </>
 }
 
 const Modal = (props) => {
-    const { type, title, product, active, setModalActive } = props;
+    document.querySelector('html').scrollTop = window.scrollY;
+
+    const {type, title, product, active, setModalActive} = props;
 
     const [isAdded, setIsAdded] = useState(false);
+
+    const closeButton = useRef(null);
 
     const handleClose = () => {
         setModalActive(false);
@@ -73,16 +82,27 @@ const Modal = (props) => {
         }
     }
 
-    return <div className={`overlay ${active ?  `overlay--active` : ``}`} onClick={handleClose} onKeyDown={handleEscKeyPress}>
-        <div className={`modal ${active ?  `modal--active` : ``}`} onClick={(evt) => evt.stopPropagation()}>
+    const handleFocusOutEvent = (evt) => {
+        if (!evt.currentTarget.contains(evt.relatedTarget)) {
+            closeButton.current.focus();
+        }
+    }
+
+    return <div className={`overlay ${active ? `overlay--active` : ``}`}
+                onClick={handleClose}
+                onKeyDown={handleEscKeyPress}
+                onBlur={handleFocusOutEvent}
+    >
+        <div className={`modal ${active ? `modal--active` : ``}`} onClick={(evt) => evt.stopPropagation()}>
             <p className="modal__title">{title}</p>
             <button className="close-button modal__close-button"
                     aria-label="Закрыть окно"
                     onClick={handleClose}
+                    ref={closeButton}
             />
-            <div className={`modal__content ${isAdded? `modal__content--success-block`: ``}`}>
-                {!isAdded && type===PopUpTypes.ADDING_TO_CART && <AddingToCart product={product} onAdd={setIsAdded}/>}
-                {type===PopUpTypes.REMOVING_FROM_CART && <RemovingFromCart  product={product} onClose={handleClose}/>}
+            <div className={`modal__content ${isAdded ? `modal__content--success-block` : ``}`}>
+                {!isAdded && type === PopUpTypes.ADDING_TO_CART && <AddingToCart product={product} onAdd={setIsAdded}/>}
+                {type === PopUpTypes.REMOVING_FROM_CART && <RemovingFromCart product={product} onClose={handleClose}/>}
                 {isAdded && <SuccessMessage onClose={handleClose}/>}
             </div>
         </div>

@@ -1,5 +1,5 @@
 import {createSelector} from "@reduxjs/toolkit";
-import {NameSpace, GuitarEnum, GuitarType} from "../../const";
+import {NameSpace} from "../../const";
 
 export const getSortType = (state) => state[NameSpace.CATALOG].activeSortType;
 export const getSortMethod = (state) => state[NameSpace.CATALOG].activeSortMethod;
@@ -12,8 +12,7 @@ export const getActiveProducts = createSelector(
         const productsDefault = products.filter((item) => {
         const isInTypeFilter = filter.types.length === 0 ?
             true :
-            Boolean(1 + filter.types.findIndex((type) => GuitarType[type].toLowerCase() === item.type.toLowerCase()));
-        console.log(item.type.toLowerCase);
+            Boolean(1 + filter.types.findIndex((type) => type === item.type));
         const isInPriceFilter =   Boolean(item.price >= filter.sum.minSum && item.price <= filter.sum.maxSum);
         const isInStringsFilter = filter.strings.length === 0 ?
             true :

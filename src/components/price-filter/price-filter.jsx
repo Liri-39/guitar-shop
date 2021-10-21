@@ -46,10 +46,10 @@ const PriceFilter = () => {
     }
 
     return <div className="filter__block-item price">
-        <label className="visually-hidden" htmlFor="min">От</label>
+        <label className="visually-hidden" htmlFor="minSum">От</label>
         <input className="price__input"
                type="number"
-               id="min"
+               id="minSum"
                name="minSum"
                min={min}
                max={max}
@@ -57,10 +57,10 @@ const PriceFilter = () => {
                value={minSum}
                onChange={handleChangeMinSum}
                aria-label="Минимальное значение"/>
-        <label className="visually-hidden" htmlFor="max">До</label>
+        <label className="visually-hidden" htmlFor="maxSum">До</label>
         <input className="price__input"
                type="number"
-               id="max"
+               id="maxSum"
                name="maxSum"
                min={min}
                max={max}

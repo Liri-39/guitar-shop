@@ -1,21 +1,17 @@
 import React, {Fragment} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {changeFilter} from "../../store/action";
-import {FilterEnum, GuitarEnum, GuitarStrings, GuitarType} from "../../const";
+import {FilterEnum, GuitarStrings} from "../../const";
 import {getFilters} from "../../store/catalog/selectors";
 
 const CheckboxFilter = ({arr, type}) => {
     const activeFilterValues = useSelector(getFilters);
-
     const dispatch = useDispatch();
+    const stringsActiveFilter = [...new Set(activeFilterValues.types.flatMap((type) => GuitarStrings[type]))];
 
 
     const handleChangeInput = (evt) => {
         const index = activeFilterValues[type].findIndex((option) => option === evt.target.value);
-        console.log(activeFilterValues[type]);
-        console.log(evt.target.value);
-        console.log(index);
-        console.log(evt.target.checked);
         const newValue = (evt.target.checked === true) ?
             [...activeFilterValues[type], evt.target.value] :
             [
@@ -27,9 +23,11 @@ const CheckboxFilter = ({arr, type}) => {
 
     return <div className="filter__block-item checkbox-filter">
         {arr.map((item) => {
+                const isDisabled = stringsActiveFilter.length > 0 ?
+                    !Boolean(1 + stringsActiveFilter.findIndex((strings) => item[1] === strings)) :
+                    false;
+                const isChecked = Boolean(1 + activeFilterValues[type].findIndex((option) => option === (type === FilterEnum.strings ? String(item[1]) : item[0])));
 
-                const isChecked = Boolean(1 + activeFilterValues[type].findIndex((option) => option === (type === FilterEnum.strings ? item[1] : item[0])
-                ));
                 return <Fragment key={`${item[0]}`}>
                     <input className="visually-hidden"
                            type="checkbox"
@@ -39,6 +37,7 @@ const CheckboxFilter = ({arr, type}) => {
                            onChange={handleChangeInput}
                            aria-label={item[1]}
                            checked={isChecked}
+                           disabled ={(type === FilterEnum.strings) ? isDisabled : false }
                     />
                     <label className="checkbox-filter__label" htmlFor={`${item[0]}-${type}`}>{item[1]}</label>
                 </Fragment>

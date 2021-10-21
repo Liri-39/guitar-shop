@@ -12,35 +12,6 @@
   border: none;
   cursor: pointer;
 
-  &--action {
-    min-width: 220px;
-    height: 36px;
-    background: $orange;
-    font-size: 16px;
-    line-height: 15px;
-    letter-spacing: 0.08em;
-
-    &:hover {
-      background-color: $orange-hover;
-    }
-
-    &:focus {
-      background-color: $orange-focus;
-    }
-  }
-
-  &--second-action {
-    border: 1px solid $dark-grey;
-    color: $dark-grey;
-    box-sizing: border-box;
-    border-radius: 2px;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 15px;
-    letter-spacing: 0.08em;
-    background-color: $white;
-  }
-
   &:hover {
     border-color: rgba($dark-grey, 0.7);
   }

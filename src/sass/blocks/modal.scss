@@ -31,6 +31,56 @@
 .modal__button {
   height: 46px;
   margin-left: auto;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.02em;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+
+  &--action {
+    min-width: 220px;
+    background: $orange;
+    font-size: 16px;
+    line-height: 15px;
+    letter-spacing: 0.08em;
+
+    &:hover {
+      background-color: $orange-hover;
+    }
+
+    &:focus {
+      background-color: $orange-focus;
+    }
+  }
+
+  &--second-action {
+    border: 1px solid $dark-grey;
+    color: $dark-grey;
+    box-sizing: border-box;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 15px;
+    letter-spacing: 0.08em;
+    background-color: $white;
+
+    &:hover {
+      border-color: rgba($dark-grey, 0.7);
+      opacity: .7;
+    }
+
+    &:focus {
+      border-color: rgba($grey-grey, 0.5);
+      opacity: .5;
+    }
+  }
 
   &--success {
     margin-left: 0;

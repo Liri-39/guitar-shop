@@ -26,6 +26,14 @@
   &--active {
     color: $black;
   }
+
+  &:hover {
+    color: $orange;
+  }
+
+  &:focus {
+    color: $black;
+  }
 }
 
 .sorter__buttons {
@@ -49,12 +57,21 @@
   cursor: pointer;
 
   &--up {
-    border-bottom-color: $grey-grey;
-    border-top-width: 0;
+    border-top-color: $grey-grey;
+    border-bottom-width: 0;
+    transform: rotate(180deg) scaleY(1.1) scaleX(0.7);
   }
 
   &--down {
     border-top-color: $grey-grey;
     border-bottom-width: 0;
+  }
+
+  &:hover {
+    border-top-color: $orange;
+  }
+
+  &:focus {
+    border-top-color: $black;
   }
 }

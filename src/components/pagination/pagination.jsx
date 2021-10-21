@@ -15,16 +15,16 @@ const Pagination = () => {
 
     const handleClick = (evt) => {
         evt.preventDefault();
-        let newValue = evt.target.id;
+        let newValue;
         switch (evt.target.id) {
             case (`prevPage`):
                 newValue = activePage - 1;
                 break;
             case (`nextPage`):
                 newValue = activePage + 1;
-                break
+                break;
             default:
-                return newValue;
+                newValue = evt.target.id;
         }
         dispatch(changePage(newValue))
     }
@@ -33,12 +33,16 @@ const Pagination = () => {
     const startPage = 1;
     const totalPages = Math.ceil(productsCount / PRODUCTS_ON_PAGE);
 
+    if (totalPages < activePage) {
+        dispatch(changePage(totalPages))
+    }
+
     return <div className="catalog__pagination pagination" onClick={handleClick}>
         {Boolean(Number(activePage) !== 1) &&
         <a className="pagination__button pagination__button--previous" id={`prevPage`} href="">Назад</a>}
         <div className="pagination__pages-list">
             <a className={`pagination__button ${activePage === startPage ? `pagination__button--active` : ``}`}
-               id={startPage} href="">{Number(startPage)}</a>
+               id={Number(startPage)} href="">{Number(startPage)}</a>
             {Boolean(Number(activePage) === startPage && totalPages>3) &&
             <a className="pagination__button" href="" id={Number(startPage + 1)}>{startPage + 1}</a>}
             {Boolean(Number(activePage) !== startPage && Number(activePage) !== startPage + 1) &&

@@ -23,16 +23,17 @@ const Sorter = () => {
 
     return <div className="sorter">
         <span className="sorter__title">Сортировать:</span>
-        <ul className="sorter__list">
+        <div className="sorter__list">
             {Object.entries(sortType).map(([key, value]) =>
-                <li className={`sorter__item ${activeSortType === key ? `sorter__item--active` : ``}`}
-                    key={key}
-                    id={key}
-                    onClick={handleTypeClick}
-                >{value}</li>
+                <a className={`sorter__item ${activeSortType === key ? `sorter__item--active` : ``}`}
+                   key={key}
+                   id={key}
+                   href="#"
+                   onClick={handleTypeClick}
+                >{value}</a>
             )
             }
-        </ul>
+        </div>
         <div className="sorter__buttons">
             {Object.entries(sortMethod).map(([key, value]) =>
                 <button

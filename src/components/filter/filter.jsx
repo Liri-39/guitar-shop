@@ -1,15 +1,15 @@
-import React, {useState} from "react";
-import {useSelector} from "react-redux";
+import React from "react";
 import {GuitarType, GuitarStrings, FilterEnum} from "../../const";
 import PriceFilter from "../price-filter/price-filter";
 import CheckboxFilter from "../checkbox-filter/checkbox-filter";
-import {getMaxPrice, getMinPrice, sortAsc} from "../../util";
-import {getActiveProducts} from "../../store/catalog/selectors";
+import {sortAsc} from "../../util";
 
 
 const Filter = () => {
-    const products = useSelector(getActiveProducts);
-    const strings = [...new Set(Object.values(GuitarStrings).flatMap((item) => item))].sort(sortAsc).map((item,index) => [index,item]);
+    const strings = [...new Set(Object.values(GuitarStrings)
+        .flatMap((item) => item))]
+        .sort(sortAsc)
+        .map((item,index) => [index,item]);
 
     return <div className="filter">
         <span className="filter__title">Фильтр</span>
@@ -25,7 +25,6 @@ const Filter = () => {
             <span className="filter__block-title">Количество струн</span>
             <CheckboxFilter arr={strings} type={FilterEnum.strings}/>
         </div>
-        <button className="filter__button">показать</button>
     </div>
 }
 

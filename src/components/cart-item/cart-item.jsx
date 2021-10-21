@@ -4,7 +4,7 @@ import Picture from "../picture/picture";
 import {changeProductCount} from "../../store/action";
 import {priceFormat} from "../../util";
 import Modal from "../modal/modal";
-import {PopUpTitles, PopUpTypes} from "../../const";
+import {GuitarNames, PopUpTitles, PopUpTypes} from "../../const";
 import PropTypes from "prop-types";
 
 const CartItem = ({product}) => {
@@ -45,7 +45,7 @@ const CartItem = ({product}) => {
             <div className="cart__item-info product-info">
                 <p className="product-info__title">{product.type} {product.name}</p>
                 <p className="product-info__article">Артикул: {product.code}</p>
-                <p className="product-info__info">{product.type}, {product.strings} струнная</p>
+                <p className="product-info__info">{GuitarNames[product.type]}, {product.strings} струнная</p>
             </div>
             <div className="cart__item-price">{priceFormat(product.price)} ₽</div>
             <div className="cart__item-count">

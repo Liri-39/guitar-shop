@@ -23,6 +23,12 @@ export const GuitarStrings = {
     UKULELE:  [4],
 }
 
+export const GuitarNames = {
+    ACOUSTIC: `Акустическая гитара`,
+    ELECTRIC: `Электрогитара`,
+    UKULELE: `Укулеле`,
+}
+
 export const ratings = [
     {rating: 5, title: `perfect`},
     {rating: 4, title: `good`},
@@ -49,7 +55,7 @@ export const AppRoute = {
 };
 
 export const PageTitles = {
-    CATALOG: `Каталог`,
+    CATALOG: `Каталог гитар`,
     CART: `Корзина`
 }
 
