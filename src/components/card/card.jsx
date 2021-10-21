@@ -10,7 +10,7 @@ const Card = ({product}) => {
     const [modalActive, setModalActive] = useState(false);
 
     return <>
-        {modalActive && <Modal product={product} title={PopUpTitle.ADDING_TO_CART} active={modalActive} type={PopUpType.ADDING_TO_CART} setModalActive={setModalActive}/>}
+        {modalActive && <Modal product={product} title={PopUpTitle.ADDING_TO_CART} active={modalActive} type={PopUpType.ADDING_TO_CART} onSetModalActive={setModalActive}/>}
         <div className="card" key={product.id}>
             <Picture webp={product.webp} jpg={product.jpg} name={product.name} location={`card`}/>
             <div className="card__rating">

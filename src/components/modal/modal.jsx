@@ -37,7 +37,8 @@ const Modal = (props) => {
                 onClick={handleClose}
                 onKeyDown={handleEscKeyPress}
                 onBlur={handleFocusOutEvent}>
-        <div className={`modal ${active ? `modal--active` : ``}`} onClick={(evt) => evt.stopPropagation()}>
+        <div className={`modal ${active ? `modal--active` : ``}`}
+             onClick={(evt) => evt.stopPropagation()}>
             <p className="modal__title">{title}</p>
             <button className="close-button modal__close-button"
                     aria-label="Закрыть окно"
