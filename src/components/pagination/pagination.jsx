@@ -29,12 +29,14 @@ const Pagination = () => {
         dispatch(changePage(newValue))
     }
 
-
     const startPage = 1;
     const totalPages = Math.ceil(productsCount / PRODUCTS_ON_PAGE);
 
     if (totalPages < activePage) {
         dispatch(changePage(totalPages))
+    }
+    if (productsCount <= PRODUCTS_ON_PAGE) {
+        dispatch(changePage(startPage))
     }
 
     return <div className="catalog__pagination pagination" onClick={handleClick}>

@@ -10,7 +10,7 @@ const Cards = ({productsOnPage}) => {
 }
 
 Cards.propTypes = {
-    productsOnPage: PropTypes.arrayOf(productPropTypes),
+    productsOnPage: PropTypes.arrayOf(productPropTypes)
 };
 
 export default Cards;

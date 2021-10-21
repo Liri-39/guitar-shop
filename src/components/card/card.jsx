@@ -36,6 +36,8 @@ const Card = ({product}) => {
     </>
 }
 
-Card.propTypes = productPropTypes;
+Card.propTypes = {
+    product: productPropTypes
+};
 
 export default Card;
