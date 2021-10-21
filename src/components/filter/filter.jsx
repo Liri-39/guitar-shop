@@ -1,12 +1,12 @@
 import React from "react";
-import {GuitarType, GuitarStrings, FilterEnum} from "../../const";
+import {GuitarType, GuitarString, FilterEnum} from "../../const";
 import PriceFilter from "../price-filter/price-filter";
 import CheckboxFilter from "../checkbox-filter/checkbox-filter";
 import {sortAsc} from "../../util";
 
 
 const Filter = () => {
-    const strings = [...new Set(Object.values(GuitarStrings)
+    const strings = [...new Set(Object.values(GuitarString)
         .flatMap((item) => item))]
         .sort(sortAsc)
         .map((item,index) => [index,item]);

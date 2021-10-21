@@ -1,6 +1,4 @@
-
-
-export const guitar = [
+export const guitars = [
     {id: 1, code: `SO757575`, name: `Честер Bass`, type: `ELECTRIC`, rate: 15, strings: 7, price: 17500, webp: [`SO757575.webp`, `SO757575_2x.webp`], jpg: [`SO757575.jpg`, `SO757575_2x.jpg`], stars: 4},
     {id: 2, code: `TK129049`, name: `СURT Z300`, type: `ELECTRIC`, rate: 9, strings: 7, price: 29500, webp: [`TK129049.webp`, `TK129049_2x.webp`], jpg: [`TK129049.jpg`, `TK129049_2x.jpg`], stars: 0},
     {id: 3, code: `RO111111`, name: `Roman LX`, type: `UKULELE`, rate: 21, strings: 4, price: 6800, webp: [`RO111111.webp`, `RO111111_2x.webp`], jpg: [`RO111111.jpg`, `RO111111_2x.jpg`], stars: 2},

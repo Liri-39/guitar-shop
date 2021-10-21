@@ -1,17 +1,17 @@
 import {createReducer} from "@reduxjs/toolkit";
-import {guitar} from "../../mocks/guitar";
+import {guitars} from "../../mocks/guitars";
 import {changeSortType, changeSortMethod, changePage, changeFilter} from "../action";
 import {getMaxPrice, getMinPrice} from "../../util";
 
 const initialState = {
-    products: guitar,
+    products: guitars,
     page: 1,
     activeSortType: ``,
     activeSortMethod: ``,
     filter: {
         sum: {
-            minSum: getMinPrice(guitar),
-            maxSum: getMaxPrice(guitar)
+            minSum: getMinPrice(guitars),
+            maxSum: getMaxPrice(guitars)
         },
         types: [],
         strings:[]

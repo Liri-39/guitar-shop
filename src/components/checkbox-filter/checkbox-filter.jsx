@@ -1,13 +1,14 @@
 import React, {Fragment} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {changeFilter} from "../../store/action";
-import {FilterEnum, GuitarStrings} from "../../const";
+import {FilterEnum, GuitarString} from "../../const";
 import {getFilters} from "../../store/catalog/selectors";
+import PropTypes from "prop-types";
 
 const CheckboxFilter = ({arr, type}) => {
     const activeFilterValues = useSelector(getFilters);
     const dispatch = useDispatch();
-    const stringsActiveFilter = [...new Set(activeFilterValues.types.flatMap((type) => GuitarStrings[type]))];
+    const stringsActiveFilter = [...new Set(activeFilterValues.types.flatMap((type) => GuitarString[type]))];
 
 
     const handleChangeInput = (evt) => {
@@ -45,5 +46,9 @@ const CheckboxFilter = ({arr, type}) => {
         )}
     </div>
 }
+CheckboxFilter.propTypes = {
+    arr: PropTypes.array,
+    type: PropTypes.string
+};
 
 export default CheckboxFilter;

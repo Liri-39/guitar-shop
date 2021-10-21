@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "../card/card";
 import PropTypes from "prop-types";
+import {productPropTypes} from "../../prop-types";
 
 const Cards = ({productsOnPage}) => {
     return <div className="cards">
@@ -9,7 +10,7 @@ const Cards = ({productsOnPage}) => {
 }
 
 Cards.propTypes = {
-    product: PropTypes.any,
+    productsOnPage: PropTypes.arrayOf(productPropTypes),
 };
 
 export default Cards;

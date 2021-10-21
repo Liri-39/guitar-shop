@@ -3,7 +3,7 @@ import Breadcrumbs from "../breadcrumbs/breadcrumbs";
 import CartItem from "../cart-item/cart-item";
 import {useSelector} from "react-redux";
 import {priceFormat, getSumWithCoupon} from "../../util";
-import {PageTitles, AppRoute, Coupons} from "../../const";
+import {PageTitle, AppRoute, Coupon} from "../../const";
 import {Link} from "react-router-dom";
 
 const Cart = () => {
@@ -13,7 +13,7 @@ const Cart = () => {
     const [isCorrect, setIsCorrect] = useState(false);
     const [isWrongCoupon, setIsWrongCoupon] = useState(false);
 
-    const couponList = Object.keys(Coupons);
+    const couponList = Object.keys(Coupon);
 
     const handleCouponInput = (evt) => {
         setCoupon(evt.target.value);
@@ -36,12 +36,12 @@ const Cart = () => {
     })
 
     if (isCorrect) {
-        totalPrice = getSumWithCoupon(totalPrice, Coupons[coupon].maxPercent, Coupons[coupon].fixSum);
+        totalPrice = getSumWithCoupon(totalPrice, Coupon[coupon].maxPercent, Coupon[coupon].fixSum);
     }
 
     return <main className="page__main main">
         <div className="main__wrapper">
-            <h1 className="main__title main__title--cart">{PageTitles.CART}</h1>
+            <h1 className="main__title main__title--cart">{PageTitle.CART}</h1>
             <Breadcrumbs/>
 
             <div className="cart">

@@ -4,21 +4,21 @@ import Picture from "../picture/picture";
 import {changeProductCount} from "../../store/action";
 import {priceFormat} from "../../util";
 import Modal from "../modal/modal";
-import {GuitarNames, PopUpTitles, PopUpTypes} from "../../const";
-import PropTypes from "prop-types";
+import {GuitarName, PopUpTitle, PopUpType} from "../../const";
+import {productPropTypes} from "../../prop-types";
 
 const CartItem = ({product}) => {
     const dispatch = useDispatch();
 
     const [modalActive, setModalActive] = useState(false);
 
-    const priceInc = (evt) => {
+    const handleButtonIncClick = (evt) => {
         evt.preventDefault();
         const newCount = Number(product.count + 1);
         dispatch(changeProductCount(newCount, product.id));
     }
 
-    const priceDec = (evt) => {
+    const handleButtonDecClick = (evt) => {
         evt.preventDefault();
         let newCount = Number(product.count - 1);
         if (newCount === 0) {
@@ -34,8 +34,8 @@ const CartItem = ({product}) => {
 
     return <>
         {modalActive &&
-        <Modal product={product} title={PopUpTitles.REMOVING_FROM_CART} active={modalActive} type={PopUpTypes.REMOVING_FROM_CART}
-               setModalActive={setModalActive}/>}
+        <Modal product={product} title={PopUpTitle.REMOVING_FROM_CART} active={modalActive} type={PopUpType.REMOVING_FROM_CART}
+               onSetModalActive={setModalActive}/>}
         <div className="cart__item">
             <button className="close-button cart__close-button"
                     aria-label="Удалить товар"
@@ -45,12 +45,12 @@ const CartItem = ({product}) => {
             <div className="cart__item-info product-info">
                 <p className="product-info__title">{product.type} {product.name}</p>
                 <p className="product-info__article">Артикул: {product.code}</p>
-                <p className="product-info__info">{GuitarNames[product.type]}, {product.strings} струнная</p>
+                <p className="product-info__info">{GuitarName[product.type]}, {product.strings} струнная</p>
             </div>
             <div className="cart__item-price">{priceFormat(product.price)} ₽</div>
             <div className="cart__item-count">
                 <button className="cart__item-count-button"
-                        onClick={priceDec}
+                        onClick={handleButtonDecClick}
                 >-
                 </button>
                 <input className="cart__item-count-input"
@@ -63,7 +63,7 @@ const CartItem = ({product}) => {
                        onChange={handleInputCount}
                        aria-label="Количество"/>
                 <button className="cart__item-count-button"
-                        onClick={priceInc}
+                        onClick={handleButtonIncClick}
                 >+
                 </button>
             </div>
@@ -72,8 +72,6 @@ const CartItem = ({product}) => {
     </>
 }
 
-CartItem.propTypes = {
-    product: PropTypes.any
-};
+CartItem.propTypes = productPropTypes;
 
 export default CartItem;

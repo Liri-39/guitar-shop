@@ -21,18 +21,21 @@ export const getActiveProducts = createSelector(
         });
         const productsCopy = productsDefault.slice();
         switch (activeSortType) {
-            case `byPrice`:
+            case `byPrice`: {
                 if (activeSortMethod === `down`) {
                     return productsCopy.sort((a, b) => b.price - a.price);
                 }
                 return productsCopy.sort((a, b) => a.price - b.price);
-            case `byRating`:
+            }
+            case `byRating`: {
                 if (activeSortMethod === `down`) {
                     return productsCopy.sort((a, b) => b.rate - a.rate);
                 }
                 return productsCopy.sort((a, b) => a.rate - b.rate);
-            default:
+            }
+            default: {
                 return productsDefault;
+            }
         }
     },
 );
