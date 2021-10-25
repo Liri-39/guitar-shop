@@ -1,7 +1,9 @@
 .social {
   display: flex;
-  column-gap: 23px;
+  flex-wrap: wrap;
+  gap: 23px;
   margin-top: -6px;
+  max-width: 120px;
 }
 
 .social__link {

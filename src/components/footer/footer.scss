@@ -34,9 +34,9 @@
 }
 
 .footer__column {
-  row-gap: 55px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   font-size: 10px;
   color: $white;
   padding-left: 1px;
@@ -53,6 +53,7 @@
     min-width: 140px;
     margin-left: auto;
     gap: 1px;
+    justify-content: flex-start;
   }
 }
 

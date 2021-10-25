@@ -1,14 +1,25 @@
 import React from "react";
+import {Link} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import Icons from "../icons/icons";
 import Social from "../social/social";
+import {AppRoute} from "../../const";
 
 const Footer = () => {
+    const location = useLocation();
+
     return <footer className="page__footer footer">
         <div className="footer__wrapper">
             <div className="footer__column">
-                <a href="/" className="logo logo--footer footer__logo" aria-label="Логотип Guitar-shop">
-                    <Icons name="logo" height="70" width="67"/>
-                </a>
+                {AppRoute.CATALOG === location.pathname ?
+                    <a className="logo logo--footer footer__logo" aria-label="Логотип Guitar-shop">
+                        <Icons name="logo" height="70" width="67"/>
+                    </a> :
+                    <Link to={AppRoute.CATALOG} className="logo logo--footer footer__logo"
+                          aria-label="Логотип Guitar-shop">
+                        <Icons name="logo" height="70" width="67"/>
+                    </Link>
+                }
                 <Social/>
             </div>
             <div className="footer__column footer__column--info">
