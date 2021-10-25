@@ -85,6 +85,14 @@
 .footer__link {
   line-height: 20px;
   color: $white;
+
+  &:hover {
+    color: $orange;
+  }
+
+  &:focus {
+    color: $grey;
+  }
 }
 
 .footer__text {
