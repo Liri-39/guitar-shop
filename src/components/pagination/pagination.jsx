@@ -23,6 +23,9 @@ const Pagination = () => {
             case (`nextPage`):
                 newValue = activePage + 1;
                 break;
+            case (``):
+                newValue = activePage;
+                break;
             default:
                 newValue = evt.target.id;
         }
@@ -48,11 +51,11 @@ const Pagination = () => {
             {Boolean(Number(activePage) === startPage && totalPages>3) &&
             <a className="pagination__button" href="" id={Number(startPage + 1)}>{startPage + 1}</a>}
             {Boolean(Number(activePage) !== startPage && Number(activePage) !== startPage + 1) &&
-            <a className="pagination__button">...</a>}
+            <div className="pagination__button pagination__button--not-active">...</div>}
             {Boolean(Number(activePage) !== totalPages && Number(activePage) !== startPage) &&
             <a className="pagination__button pagination__button--active">{Number(activePage)}</a>}
             {Boolean(Number(activePage) !== totalPages && Number(activePage) !== totalPages - 1) &&
-            <a className="pagination__button">...</a>}
+            <div className="pagination__button pagination__button--not-active">...</div>}
             {Boolean(Number(activePage) === totalPages && totalPages>3) &&
             <a className="pagination__button" href="" id={Number(totalPages - 1)}>{totalPages - 1}</a>}
             <a className={`pagination__button ${activePage === totalPages ? `pagination__button--active` : ``}`}

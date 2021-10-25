@@ -44,3 +44,9 @@
   display: flex;
   column-gap: 10px;
 }
+
+.pagination__button--not-active {
+  &:hover, &:focus {
+    opacity: 1;
+  }
+}
