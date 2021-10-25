@@ -1,5 +1,5 @@
 import React, {useState, useRef} from "react";
-import {PopUpType} from "../../const";
+import {PopUpTitle, PopUpType} from "../../const";
 import PropTypes from "prop-types";
 import {productPropTypes} from "../../prop-types";
 import MessageSuccess from "./message-success/message-success";
@@ -39,7 +39,9 @@ const Modal = (props) => {
                 onBlur={handleFocusOutEvent}>
         <div className={`modal ${active ? `modal--active` : ``}`}
              onClick={(evt) => evt.stopPropagation()}>
-            <p className="modal__title">{title}</p>
+            <p className="modal__title">
+                {isAdded ? PopUpTitle.SUCCESS_MESSAGE : title}
+            </p>
             <button className="close-button modal__close-button"
                     aria-label="Закрыть окно"
                     onClick={handleClose}
