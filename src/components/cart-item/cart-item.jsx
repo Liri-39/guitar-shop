@@ -29,7 +29,7 @@ const CartItem = ({product}) => {
     }
 
     const handleInputCount = (evt) => {
-        dispatch(changeProductCount(evt.value, product.id));
+        dispatch(changeProductCount(evt.target.value, product.id));
     }
 
     return <>
