@@ -29,7 +29,7 @@ const CartItem = ({product}) => {
     }
 
     const handleInputCount = (evt) => {
-        dispatch(changeProductCount(evt.target.value, product.id));
+        dispatch(changeProductCount(Number(evt.target.value), product.id));
     }
 
     return <>
@@ -72,6 +72,8 @@ const CartItem = ({product}) => {
     </>
 }
 
-CartItem.propTypes = productPropTypes;
+CartItem.propTypes = {
+    product: productPropTypes,
+};
 
 export default CartItem;

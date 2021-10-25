@@ -12,6 +12,8 @@ const ProductInfo = ({product}) => {
     </div>
 }
 
-ProductInfo.propTypes = productPropTypes;
+ProductInfo.propTypes = {
+    product: productPropTypes,
+};
 
 export default ProductInfo;

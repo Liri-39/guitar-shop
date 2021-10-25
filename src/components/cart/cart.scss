@@ -7,7 +7,7 @@
   display: flex;
   width: 100%;
   border-top: 0.7px solid $light-grey;
-  padding: 19px 0 18px;
+  padding: 19px 0 12px;
   align-content: flex-start;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -29,8 +29,11 @@
 
 .cart__image {
   width: 48px;
-  height: auto;
+  height: 132px;
   margin-right: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cart__title {
