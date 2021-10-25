@@ -19,4 +19,17 @@
     height: 8px;
     margin-left: 10px;
   }
+
+  & a {
+    color: inherit;
+
+    &:hover {
+      color: $black-grey;
+    }
+
+    &:focus {
+      color: $black-grey;
+      opacity: .5;
+    }
+  }
 }
