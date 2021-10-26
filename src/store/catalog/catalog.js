@@ -2,6 +2,7 @@ import {createReducer} from "@reduxjs/toolkit";
 import {guitars} from "../../mocks/guitars";
 import {changeSortType, changeSortMethod, changePage, changeFilter} from "../action";
 import {getMaxPrice, getMinPrice} from "../../util";
+import {FilterEnum, GuitarString} from "../../const";
 
 const initialState = {
     products: guitars,
@@ -30,7 +31,22 @@ const catalog = createReducer(initialState, (builder) => {
             state.page = Number(action.payload);
         })
         .addCase(changeFilter, (state, action) => {
-            state.filter = (Object.assign(state.filter, action.payload));
+
+            const index = state.filter[action.payload.type].findIndex((option) => option === action.payload.value);
+            const newValue = (action.payload.actionType === true) ?
+                [...state.filter[action.payload.type], action.payload.value] :
+                [
+                    ...state.filter[action.payload.type].slice(0, index),
+                    ...state.filter[action.payload.type].slice(index + 1)
+                ];
+
+            state.filter = (Object.assign(state.filter, {[action.payload.type]: newValue}));
+
+            if (action.payload.actionType === false && action.payload.type === FilterEnum.types) {
+                const stringsActiveFilter = [...new Set(state.filter.types.flatMap((item) => GuitarString[item]))];
+                const strings = state.filter.strings.filter((x) => stringsActiveFilter.includes(Number(x)));
+                state.filter =(Object.assign(state.filter, {strings: strings}));
+            }
         })
 });
 

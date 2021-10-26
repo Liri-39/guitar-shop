@@ -35,4 +35,8 @@ const getSumWithCoupon = (sum, maxPercent, fixSum) => {
     }
 }
 
-export {getSumWithCoupon, getProductsOnPage, getMaxPrice, getMinPrice, sortAsc, priceFormat};
+const checkValueInArray = (value, arr) => {
+    return arr.findIndex((item) => item === value)
+}
+
+export {getSumWithCoupon, getProductsOnPage, getMaxPrice, getMinPrice, sortAsc, priceFormat, checkValueInArray};

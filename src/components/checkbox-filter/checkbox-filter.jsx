@@ -8,18 +8,11 @@ import PropTypes from "prop-types";
 const CheckboxFilter = ({arr, type}) => {
     const activeFilterValues = useSelector(getFilters);
     const dispatch = useDispatch();
-    const stringsActiveFilter = [...new Set(activeFilterValues.types.flatMap((type) => GuitarString[type]))];
+    const stringsActiveFilter = [...new Set(activeFilterValues.types.flatMap((item) => GuitarString[item]))];
 
 
     const handleChangeInput = (evt) => {
-        const index = activeFilterValues[type].findIndex((option) => option === evt.target.value);
-        const newValue = (evt.target.checked === true) ?
-            [...activeFilterValues[type], evt.target.value] :
-            [
-                ...activeFilterValues[type].slice(0, index),
-                ...activeFilterValues[type].slice(index + 1)
-            ];
-        dispatch(changeFilter(type, newValue));
+        dispatch(changeFilter(type, evt.target.value, evt.target.checked));
     }
 
     return <div className="filter__block-item checkbox-filter">

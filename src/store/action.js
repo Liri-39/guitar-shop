@@ -46,8 +46,8 @@ export const changePage = createAction(ActionType.CHANGE_PAGE, (page) => {
     };
 });
 
-export const changeFilter = createAction(ActionType.CHANGE_FILTER, (type, filter) => {
+export const changeFilter = createAction(ActionType.CHANGE_FILTER, (type, value, actionType) => {
     return {
-        payload: {[type]: filter},
+        payload: {type, value, actionType},
     };
 });
