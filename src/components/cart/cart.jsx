@@ -16,7 +16,7 @@ const Cart = () => {
     const couponList = Object.keys(Coupon);
 
     const handleCouponInput = (evt) => {
-        setCoupon(evt.target.value);
+        setCoupon(evt.target.value.trim());
         setIsWrongCoupon(false);
         setIsCorrect(false);
     }
