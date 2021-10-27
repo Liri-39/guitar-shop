@@ -22,7 +22,7 @@ const CartItem = ({product}) => {
 
     const handleButtonDecClick = (evt) => {
         evt.preventDefault();
-        let newCount = Number(product.count - 1);
+        let newCount = Number(count - 1);
         if (newCount === 0) {
             newCount = 1;
             setModalActive(true)
