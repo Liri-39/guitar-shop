@@ -5,8 +5,8 @@ const Picture = ({webp, jpg, name, location}) => {
     return <picture className={`picture ${location}__image`}>
         <source type="image/webp" srcSet={`img/${webp[0]} 1x, img/${webp[1]} 2x`}/>
         <img className="picture__img"
-             src={jpg[0]}
-             srcSet={`${jpg[0]} 1x, ${jpg[1]} 2x`} alt={name}/>
+             src={`img/${jpg[0]}`}
+             srcSet={`img/${jpg[0]} 1x, img/${jpg[1]} 2x`} alt={name}/>
     </picture>
 }
 
