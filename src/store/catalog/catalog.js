@@ -1,6 +1,6 @@
 import {createReducer} from "@reduxjs/toolkit";
 import {guitars} from "../../mocks/guitars";
-import {changeSortType, changeSortMethod, changePage, changeFilter} from "../action";
+import {changeSortType, changeSortMethod, changePage, changeFilter, changeFilterPrice} from "../action";
 import {getMaxPrice, getMinPrice} from "../../util";
 import {FilterEnum, GuitarString} from "../../const";
 
@@ -30,6 +30,10 @@ const catalog = createReducer(initialState, (builder) => {
         .addCase(changePage, (state, action) => {
             state.page = Number(action.payload);
         })
+        .addCase(changeFilterPrice, (state, action) => {
+            const newValue = Object.assign(state.filter.sum, {[action.payload.id]: action.payload.value});
+            state.filter = (Object.assign(state.filter,newValue));
+        })
         .addCase(changeFilter, (state, action) => {
 
             const index = state.filter[action.payload.type].findIndex((option) => option === action.payload.value);
@@ -42,7 +46,7 @@ const catalog = createReducer(initialState, (builder) => {
 
             state.filter = (Object.assign(state.filter, {[action.payload.type]: newValue}));
 
-            if (action.payload.actionType === false && action.payload.type === FilterEnum.types) {
+            if (action.payload.type === FilterEnum.types) {
                 const stringsActiveFilter = [...new Set(state.filter.types.flatMap((item) => GuitarString[item]))];
                 const strings = state.filter.strings.filter((x) => stringsActiveFilter.includes(Number(x)));
                 state.filter =(Object.assign(state.filter, {strings: strings}));

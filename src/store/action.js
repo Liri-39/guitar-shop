@@ -7,7 +7,8 @@ export const ActionType = {
     REMOVE_PRODUCT_FROM_BASKET: `removeProductFromBasket`,
     CHANGE_PRODUCT_COUNT: `changeProductCount`,
     CHANGE_PAGE: `changePage`,
-    CHANGE_FILTER:`changeFilter`
+    CHANGE_FILTER:`changeFilter`,
+    CHANGE_FILTER_VALUE:`changeFilterPrice`
 }
 
 export const addProductToCart = createAction(ActionType.ADD_PRODUCT_TO_BASKET, (product) => {
@@ -46,8 +47,14 @@ export const changePage = createAction(ActionType.CHANGE_PAGE, (page) => {
     };
 });
 
-export const changeFilter = createAction(ActionType.CHANGE_FILTER, (type, value, actionType) => {
+export const changeFilter = createAction(ActionType.CHANGE_FILTER_VALUE, (type, value, actionType) => {
     return {
         payload: {type, value, actionType},
+    };
+});
+
+export const changeFilterPrice = createAction(ActionType.CHANGE_FILTER, (type, id, value) => {
+    return {
+        payload: {type, id, value},
     };
 });

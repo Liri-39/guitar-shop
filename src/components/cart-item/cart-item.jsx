@@ -11,10 +11,12 @@ const CartItem = ({product}) => {
     const dispatch = useDispatch();
 
     const [modalActive, setModalActive] = useState(false);
+    const [count, setCount] = useState(product.count);
 
     const handleButtonIncClick = (evt) => {
         evt.preventDefault();
-        const newCount = Number(product.count + 1);
+        const newCount = Number(count + 1);
+        setCount(newCount);
         dispatch(changeProductCount(newCount, product.id));
     }
 
@@ -25,21 +27,26 @@ const CartItem = ({product}) => {
             newCount = 1;
             setModalActive(true)
         }
+        setCount(newCount);
         dispatch(changeProductCount(newCount, product.id));
     }
 
     const handleInputCount = (evt) => {
+        Number(evt.target.value) > 0 ?
+            setCount(Number(evt.target.value)) :
+            setCount(1);
         dispatch(changeProductCount(Number(evt.target.value), product.id));
     }
 
     return <>
         {modalActive &&
-        <Modal product={product} title={PopUpTitle.REMOVING_FROM_CART} active={modalActive} type={PopUpType.REMOVING_FROM_CART}
+        <Modal product={product} title={PopUpTitle.REMOVING_FROM_CART} active={modalActive}
+               type={PopUpType.REMOVING_FROM_CART}
                onSetModalActive={setModalActive}/>}
         <div className="cart__item">
             <button className="close-button cart__close-button"
                     aria-label="Удалить товар"
-                    onClick={()=>setModalActive(true)}
+                    onClick={() => setModalActive(true)}
             />
             <Picture webp={product.webp} jpg={product.jpg} name={product.name} location={`cart`}/>
             <div className="cart__item-info product-info">
@@ -59,7 +66,7 @@ const CartItem = ({product}) => {
                        name={`${product.id}-count`}
                        min={1}
                        placeholder={1}
-                       value={product.count}
+                       value={count}
                        onChange={handleInputCount}
                        aria-label="Количество"/>
                 <button className="cart__item-count-button"

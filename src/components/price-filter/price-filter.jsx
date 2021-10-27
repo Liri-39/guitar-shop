@@ -2,7 +2,7 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getFilters} from "../../store/catalog/selectors";
 import {getMaxPrice, getMinPrice} from "../../util";
-import {changeFilter} from "../../store/action";
+import {changeFilterPrice} from "../../store/action";
 import {FilterEnum} from "../../const";
 
 const PriceFilter = () => {
@@ -25,10 +25,7 @@ const PriceFilter = () => {
         if (newValue < min) {
             newValue = min
         }
-        dispatch(changeFilter(FilterEnum.sum, {
-            ...activeFilterValues.sum,
-            [evt.target.id]: Number(newValue)
-        }));
+        dispatch(changeFilterPrice(FilterEnum.sum, evt.target.id, Number(newValue)));
     }
 
     const handleChangeMaxSum = (evt) => {
@@ -39,10 +36,7 @@ const PriceFilter = () => {
         if (newValue > max) {
             newValue = max
         }
-        dispatch(changeFilter(FilterEnum.sum, {
-            ...activeFilterValues.sum,
-            [evt.target.id]: Number(newValue)
-        }));
+        dispatch(changeFilterPrice(FilterEnum.sum, [evt.target.id], Number(newValue)));
     }
 
     return <div className="filter__block-item price">
