@@ -1,7 +1,6 @@
 .social {
   display: flex;
   flex-wrap: wrap;
-  gap: 23px;
   margin-top: -6px;
   max-width: 120px;
 }
@@ -16,5 +15,9 @@
 
   &:focus {
     color: $grey-grey;
+  }
+
+  &:not(:nth-last-child(3n)) {
+    margin-left: 23px;
   }
 }

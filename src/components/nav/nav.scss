@@ -6,7 +6,6 @@
 .nav__list {
   display: flex;
   list-style: none;
-  column-gap: 40px;
   row-gap: 10px;
   margin: 0;
   padding: 0;
@@ -14,7 +13,11 @@
 }
 
 .nav__item {
+  margin-right: 40px;
 
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .nav__link {

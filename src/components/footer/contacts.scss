@@ -1,9 +1,7 @@
 .contacts {
   display: flex;
   flex-direction: column;
-  row-gap: 13px;
   line-height: 12px;
-  gap: 13px;
 }
 
 .contacts__phone {
@@ -32,6 +30,10 @@
 .contacts__item{
   display: flex;
   flex-direction: column;
+
+  &:not(:last-child) {
+    margin-bottom: 13px;
+  }
 }
 
 

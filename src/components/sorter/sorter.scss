@@ -4,18 +4,17 @@
   display: flex;
   letter-spacing: 0.08em;
   justify-content: flex-start;
-  column-gap: 18px;
 }
 
 .sorter__title {
   color: $black;
+  margin-right: 18px;
 }
 
 .sorter__list {
   margin: 0;
   padding: 0;
   display: flex;
-  column-gap: 33px;
   list-style: none;
 }
 
@@ -33,6 +32,10 @@
 
   &:focus {
     color: $black;
+  }
+
+  &:not(:last-child) {
+    margin-right: 33px;
   }
 }
 
