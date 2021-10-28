@@ -31,18 +31,21 @@
     margin-right: 14px;
   }
 
-  &--next{
+  &--next {
     margin-left: 14px;
   }
 
   &:hover {
     opacity: .5;
   }
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
 }
 
 .pagination__pages-list {
   display: flex;
-  column-gap: 10px;
 }
 
 .pagination__button--not-active {
