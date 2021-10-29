@@ -54,15 +54,15 @@ const PriceFilter = () => {
                     setMaxSum(max);
                     dispatch(changeFilterPrice(evt.target.id, max));
                 }
-                if (evt.target.value < minSum && minSum !== "") {
+                if (Number(evt.target.value) < Number(minSum) && minSum !== "") {
                     setMaxSum(minSum);
                     dispatch(changeFilterPrice(evt.target.id, Number(minSum)));
                 }
-                if (evt.target.value < min && minSum === "") {
+                if (Number(evt.target.value) < min && minSum === "") {
                     setMaxSum(min);
                     dispatch(changeFilterPrice(evt.target.id, min));
                 }
-                if (evt.target.value > 0 && evt.target.value < max && ((evt.target.value > minSum && minSum !== "") || (minSum === "" && evt.target.value > min))) {
+                if (Number(evt.target.value) > 0 && Number(evt.target.value) < max && ((Number(evt.target.value) > Number(minSum) && minSum !== "") || (minSum === "" && Number(evt.target.value) > min))) {
                     dispatch(changeFilterPrice(evt.target.id, Number(evt.target.value)));
                 }
             }
