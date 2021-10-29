@@ -33,11 +33,11 @@ const PriceFilter = () => {
                     setMinSum(maxSum);
                     dispatch(changeFilterPrice(evt.target.id, Number(maxSum)));
                 }
-                if (evt.target.value > max && maxSum === "") {
+                if (Number(evt.target.value) > max && maxSum === "") {
                     setMinSum(max);
                     dispatch(changeFilterPrice(evt.target.id, max));
                 }
-                if (evt.target.value > 0 && evt.target.value > min && ((evt.target.value < maxSum && maxSum !== "")|| (maxSum === "" && evt.target.value < max))) {
+                if (Number(evt.target.value) > 0 && Number(evt.target.value) > min && ((Number(evt.target.value) < Number(maxSum) && maxSum !== "")|| (maxSum === "" && Number(evt.target.value) < max))) {
                     setMinSum(evt.target.value);
                     dispatch(changeFilterPrice(evt.target.id, Number(evt.target.value)));
                 }
