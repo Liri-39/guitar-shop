@@ -31,8 +31,14 @@ const catalog = createReducer(initialState, (builder) => {
             state.page = Number(action.payload);
         })
         .addCase(changeFilterPrice, (state, action) => {
-            const newValue = Object.assign(state.filter.sum, {[action.payload.id]: action.payload.value});
-            state.filter = (Object.assign(state.filter,newValue));
+            let minSum = action.payload.id === "minSum" ?
+                action.payload.value :
+                state.filter.sum.minSum;
+            let maxSum = action.payload.id === "maxSum" ?
+                action.payload.value :
+                state.filter.sum.maxSum;
+
+            state.filter.sum = Object.assign(state.filter.sum, {minSum: minSum}, {maxSum: maxSum});
         })
         .addCase(changeFilter, (state, action) => {
 

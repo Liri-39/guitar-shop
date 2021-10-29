@@ -37,7 +37,15 @@
     outline: none;
   }
 
+  &::placeholder {
+    color: $lighter-grey;
+  }
+
   &:hover {
     border-color: $dark-grey;
+  }
+
+  &:focus {
+    opacity: 1;
   }
 }

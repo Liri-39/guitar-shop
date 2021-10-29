@@ -11,14 +11,14 @@ const UserNav = () => {
     return <div className="header__nav-user nav-user">
         <ul className="nav-user__list">
             <li className="nav-user__item">
-                <a className="nav-user__link" href="/" aria-label="Карта">
+                <Link to={AppRoute.NOT_FOUND} className="nav-user__link" href="/" aria-label="Карта">
                     <Icons name="icon-map" height="14" width="17"/>
-                </a>
+                </Link>
             </li>
             <li className="nav-user__item">
-                <a className="nav-user__link" href="/" aria-label="Поиск">
+                <Link to={AppRoute.NOT_FOUND} className="nav-user__link" href="/" aria-label="Поиск">
                     <Icons name="icon-search" height="14" width="14"/>
-                </a>
+                </Link>
             </li>
             {AppRoute.CART === location.pathname ?
                 <li className="nav-user__item">

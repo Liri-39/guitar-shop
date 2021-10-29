@@ -10,13 +10,19 @@ export const getActiveProducts = createSelector(
     [getProducts, getSortType, getSortMethod, getFilters],
     (products, activeSortType, activeSortMethod, filter) => {
         const productsDefault = products.filter((item) => {
-        const isInTypeFilter = filter.types.length === 0 ?
-            true :
-            Boolean(1 + filter.types.findIndex((type) => type === item.type));
-        const isInPriceFilter =   Boolean(item.price >= filter.sum.minSum && item.price <= filter.sum.maxSum);
-        const isInStringsFilter = filter.strings.length === 0 ?
-            true :
-            1 + filter.strings.findIndex((count) => Number(count) === Number(item.strings));
+
+            const isInTypeFilter = filter.types.length === 0 ?
+                true :
+                Boolean(1 + filter.types.findIndex((type) => type === item.type));
+
+            const isInPriceFilter = filter.sum.minSum === 0 &&  filter.sum.maxSum === 0 ?
+                true :
+                Boolean(item.price >= filter.sum.minSum && item.price <= filter.sum.maxSum);
+
+            const isInStringsFilter = filter.strings.length === 0 ?
+                true :
+                1 + filter.strings.findIndex((count) => Number(count) === Number(item.strings));
+
             return Boolean(isInTypeFilter && isInPriceFilter && isInStringsFilter);
         });
         const productsCopy = productsDefault.slice();

@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 208px 1fr;
   grid-template-rows: min-content 1fr min-content;
-  gap: 28px 32px;
+  gap: 0 32px;
   grid-template-areas:
     "filters sorter"
     "filters catalog"
@@ -16,5 +16,5 @@
 }
 
 .catalog__pagination {
-  margin-top: 2px;
+  margin-top: 28px;
 }

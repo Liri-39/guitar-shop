@@ -11,9 +11,9 @@ const Nav = () => {
                 <li className="nav__item"><a className="nav__link">Каталог</a></li> :
                 <li className="nav__item"><Link to={AppRoute.CATALOG}  className="nav__link">Каталог</Link></li>
             }
-            <li className="nav__item"> <a className="nav__link" href="#">Где купить?</a></li>
-            <li className="nav__item"> <a className="nav__link" href="#">О компании</a></li>
-            <li className="nav__item"> <a className="nav__link" href="#">Сервис-центры</a></li>
+            <li className="nav__item"> <Link to={AppRoute.NOT_FOUND} className="nav__link">Где купить?</Link></li>
+            <li className="nav__item"> <Link to={AppRoute.NOT_FOUND} className="nav__link">О компании</Link></li>
+            <li className="nav__item"> <Link to={AppRoute.NOT_FOUND} className="nav__link">Сервис-центры</Link></li>
         </ul>
     </nav>
 }

@@ -33,9 +33,10 @@
     color: $black-grey;
   }
 
-  &:focus {
+  &:active {
     color: $black-grey;
     opacity: .5;
+    outline: none;
   }
 }
 

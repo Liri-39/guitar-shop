@@ -50,7 +50,8 @@ const PopUpTitle = {
 
 const AppRoute = {
     CATALOG: `/`,
-    CART: `/cart`
+    CART: `/cart`,
+    NOT_FOUND: `/404`
 };
 
 const PageTitle = {

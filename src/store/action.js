@@ -53,8 +53,8 @@ export const changeFilter = createAction(ActionType.CHANGE_FILTER_VALUE, (type, 
     };
 });
 
-export const changeFilterPrice = createAction(ActionType.CHANGE_FILTER, (type, id, value) => {
+export const changeFilterPrice = createAction(ActionType.CHANGE_FILTER, (id, value) => {
     return {
-        payload: {type, id, value},
+        payload: {id, value},
     };
 });

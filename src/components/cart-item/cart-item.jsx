@@ -32,10 +32,20 @@ const CartItem = ({product}) => {
     }
 
     const handleInputCount = (evt) => {
-        Number(evt.target.value) > 0 ?
-            setCount(Number(evt.target.value)) :
+        if (evt.target.value.length === 0) {
+            setCount(``);
+        }
+        if (evt.target.value > 0) {
+            setCount(Number(evt.target.value));
+            dispatch(changeProductCount(Number(evt.target.value), product.id));
+        }
+    }
+
+    const handleBlurInput = () => {
+        if (count === ``) {
             setCount(1);
-        dispatch(changeProductCount(Number(evt.target.value), product.id));
+            dispatch(changeProductCount(1, product.id));
+        }
     }
 
     return <>
@@ -65,9 +75,10 @@ const CartItem = ({product}) => {
                        id={`${product.id}-count`}
                        name={`${product.id}-count`}
                        min={1}
-                       placeholder={1}
+                       placeholder={``}
                        value={count}
-                       onChange={handleInputCount}
+                       onInput={handleInputCount}
+                       onBlur={handleBlurInput}
                        aria-label="Количество"/>
                 <button className="cart__item-count-button"
                         onClick={handleButtonIncClick}
