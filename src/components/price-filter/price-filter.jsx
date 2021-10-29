@@ -29,7 +29,7 @@ const PriceFilter = () => {
                     setMinSum(min);
                     dispatch(changeFilterPrice(evt.target.id, min));
                 }
-                if (evt.target.value > maxSum && maxSum !== "") {
+                if (Number(evt.target.value) > Number(maxSum) && maxSum !== "") {
                     setMinSum(maxSum);
                     dispatch(changeFilterPrice(evt.target.id, Number(maxSum)));
                 }
